@@ -54,8 +54,8 @@ function App() {
     const totalAmount = cartItems.reduce((a, c) => a + c.price * c.quantity, 0);
   
     try {
-      // Send chat_id and total_amount to your backend for invoice processing
-      const response = await fetch('/send_invoice', {
+      // Send chat_id and total_amount to your Netlify function for invoice processing
+      const response = await fetch('/.netlify/functions/send_invoice', {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -82,6 +82,7 @@ function App() {
       console.error("Error during checkout:", error);
     }
   };
+  
   
   
 
